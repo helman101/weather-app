@@ -35,7 +35,7 @@
 }
 
 .condition {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .data-wrapper {
@@ -62,8 +62,18 @@
   box-shadow: 0 0 4px 5px  rgba(255, 255, 255, 0.459);
 }
 
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
 body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
+

@@ -21,9 +21,9 @@ let pageLoad = () => {
   let dataWrapper = document.createElement('div');
   dataWrapper.classList.add('data-wrapper')
   let condition = document.createElement('p');
-  condition.classList.add('condition');
+  condition.classList.add('condition', 'mb-10');
   let description = document.createElement('p');
-  description.classList.add('description');
+  description.classList.add('description', 'mb-10');
   let feelsLike = document.createElement('p');
   feelsLike.classList.add('feels-like')
   let minTemp = document.createElement('p');
