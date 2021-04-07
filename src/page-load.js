@@ -1,3 +1,17 @@
+import weatherData from './weather'
+
+let ubicationSuccess = async function(data) {
+  await weatherData.getWeatherByUbication(41, 12);
+  let temperatures = weatherData.getTemperatures();
+  let weatherInfo = weatherData.getWeatherInfo();
+  setTags(temperatures, weatherInfo);
+}
+
+let getUbication = () => {
+  navigator.geolocation.getCurrentPosition(async function(data) { await ubicationSuccess(data) }, function(err) { alert(`Please allow location access`) });
+}
+
+
 let pageLoad = () => {
   let container = document.querySelector('.container');
   let card = document.createElement('div');
