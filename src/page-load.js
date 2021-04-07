@@ -41,17 +41,19 @@ let getUbication = () => {
   navigator.geolocation.getCurrentPosition(async function(data) { await ubicationSuccess(data) }, function(err) { alert(`Please allow location access`) });
 }
 
+let searchByCity = async function(cityName, unit) {
+  
+}
+
 
 let pageLoad = () => {
   let container = document.querySelector('.container');
-  let search = document.querySelector('.search');
-  let cityLabel = document.createElement('label');
-  cityLabel.textContent = 'City Name: ';
-  let cityField = document.createElement('input');
-  cityField.type = 'text';
-  cityField.placeholder = 'New York';
-  let searchBtn = document.createElement('button');
-  searchBtn.textContent = 'Search Weather';
+  let cityField = document.querySelector('.city');
+  let unitSelect = document.querySelector('.unit')
+  let searchBtn = document.querySelector('.search-btn');
+
+  searchBtn.onclick = () => {console.log(cityField.value, unitSelect.value)}
+
   let card = document.createElement('div');
   card.classList.add('card');
   let cityName = document.createElement('div');
@@ -79,9 +81,6 @@ let pageLoad = () => {
 
   ubication();
 
-  search.appendChild(cityLabel);
-  search.appendChild(cityField);
-  search.appendChild(searchBtn);
   dataWrapper.appendChild(condition);
   dataWrapper.appendChild(description);
   dataWrapper.appendChild(feelsLike);
