@@ -45,6 +45,13 @@ let getUbication = () => {
 let pageLoad = () => {
   let container = document.querySelector('.container');
   let search = document.querySelector('.search');
+  let cityLabel = document.createElement('label');
+  cityLabel.textContent = 'City Name: ';
+  let cityField = document.createElement('input');
+  cityField.type = 'text';
+  cityField.placeholder = 'New York';
+  let searchBtn = document.createElement('button');
+  searchBtn.textContent = 'Search Weather';
   let card = document.createElement('div');
   card.classList.add('card');
   let cityName = document.createElement('div');
@@ -71,7 +78,10 @@ let pageLoad = () => {
   }
 
   ubication();
-  
+
+  search.appendChild(cityLabel);
+  search.appendChild(cityField);
+  search.appendChild(searchBtn);
   dataWrapper.appendChild(condition);
   dataWrapper.appendChild(description);
   dataWrapper.appendChild(feelsLike);
