@@ -9,15 +9,17 @@ let pageLoad = () => {
   searchBtn.onclick = () => {searchMod.searchByCity(cityField.value || 'New york', unitSelect.value)}
 
   let card = document.createElement('div');
-  card.classList.add('card');
+  card.classList.add('card', 'd-flex', 'justify-content-center', 'align-items-center', 'flex-column');
   let cityName = document.createElement('div');
-  cityName.classList.add('city');
+  cityName.classList.add('city', 'bold');
   let temperatureWrapper = document.createElement('div');
+  temperatureWrapper.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-column')
   let image = document.createElement('img');
   image.classList.add('weather-img');
   let temperature = document.createElement('div');
-  temperature.classList.add('temperature');
+  temperature.classList.add('temperature', 'bold');
   let dataWrapper = document.createElement('div');
+  dataWrapper.classList.add('data-wrapper')
   let condition = document.createElement('p');
   condition.classList.add('condition');
   let description = document.createElement('p');

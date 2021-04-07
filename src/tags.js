@@ -35,6 +35,34 @@ let setUnitString = (unit) => {
   return string
 }
 
+let setCardBackground = (weather) => {
+  let body = document.body;
+
+  switch (weather) {
+    case 'Thunderstorm':
+      body.style.backgroundImage = 'url(https://media.giphy.com/media/iN6lLmUb8exMI/giphy.gif)';
+      break;
+    case 'Drizzle':
+      body.style.backgroundImage = 'url(https://media.giphy.com/media/l0IrIkq7Q3iRII0hy/source.gif)';
+      break;
+    case 'Rain':
+      body.style.backgroundImage = 'url(https://media.giphy.com/media/s9cu1TZU37KY8/source.gif)';
+      break;  
+    case 'Snow':
+      body.style.backgroundImage = 'url(https://media.giphy.com/media/rRmBOCZDJJGU0/source.gif)';
+      break;
+    case 'Clear':
+      body.style.backgroundImage = 'url(https://media.giphy.com/media/u01ioCe6G8URG/source.gif)';
+      break;
+    case 'Clouds':
+      body.style.backgroundImage = 'url(https://media.giphy.com/media/gk3s6G7AdUNkey0YpE/giphy.gif)';
+      break;
+
+    default:
+      body.style.backgroundImage = 'url(https://media.giphy.com/media/yhZr5Wx7CBFbq/source.gif)';
+  }
+}
+
 let setTags = (temperatures, weather, unit) => {
   let tags = getTags();
 
@@ -48,6 +76,8 @@ let setTags = (temperatures, weather, unit) => {
   tags.feelsLike.textContent = `Feel: ${parseInt(temperatures.feels_like)} ${unitTemp}`;
   tags.minTemp.textContent = `Min: ${parseInt(temperatures.temp_min)} ${unitTemp}`;
   tags.maxTemp.textContent = `Max: ${parseInt(temperatures.temp_max)} ${unitTemp}`;
+
+  setCardBackground(weather.main);
 }
 
 export default setTags
