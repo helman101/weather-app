@@ -14,15 +14,17 @@ let searchModule = (() => {
   }
   
   let searchByCity = async function(cityName, unit) {
+    let notice = document.querySelector('.notice');
+    if(notice) { document.body.removeChild(notice) }
     try {
       await weatherData.getWeatherByCity(cityName, unit);
       let temperatures = weatherData.getTemperatures();
       let weatherInfo = weatherData.getWeatherInfo();
       setTags(temperatures, weatherInfo, unit);
-    }
-    catch {
+    } catch(error) {
       let notice = document.createElement('div');
-      notice.textContent = 'This is\'nt a valid country'
+      notice.classList.add('notice');
+      notice.textContent = 'This is not a valid country'
   
       document.body.appendChild(notice)
     }

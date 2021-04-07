@@ -70,6 +70,16 @@
   margin-bottom: 10px;
 }
 
+.notice {
+  font-size: 1.3rem;
+  text-align: center;
+  width: 100%;
+  color: white;
+  background-color: rgb(255, 55, 55);
+  position: fixed;
+  bottom: 0px;
+}
+
 body {
   background-size: cover;
   background-repeat: no-repeat;
