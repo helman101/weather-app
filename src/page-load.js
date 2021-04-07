@@ -42,17 +42,28 @@ let getUbication = () => {
 }
 
 let searchByCity = async function(cityName, unit) {
-  
+  try {
+    await weatherData.getWeatherByCity(cityName, unit);
+    let temperatures = weatherData.getTemperatures();
+    let weatherInfo = weatherData.getWeatherInfo();
+    setTags(temperatures, weatherInfo);
+  }
+  catch {
+    let notice = document.createElement('div');
+    notice.textContent = 'This is\'nt a valid country'
+
+    document.body.appendChild(notice)
+  }
 }
 
 
 let pageLoad = () => {
   let container = document.querySelector('.container');
-  let cityField = document.querySelector('.city');
-  let unitSelect = document.querySelector('.unit')
+  let cityField = document.querySelector('.city-text');
+  let unitSelect = document.querySelector('.unit');
   let searchBtn = document.querySelector('.search-btn');
 
-  searchBtn.onclick = () => {console.log(cityField.value, unitSelect.value)}
+  searchBtn.onclick = () => {searchByCity(cityField.value || 'New york', unitSelect.value)}
 
   let card = document.createElement('div');
   card.classList.add('card');

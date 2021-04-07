@@ -19,7 +19,7 @@ let weatherModule = (() => {
     return currentData.weather[0]
   }
 
-  async function getWeatherByCity(city = 'Rome', unitTemp = 'metric') {
+  async function getWeatherByCity(city, unitTemp) {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unitTemp}&APPID=${API_KEY}`
     let response = await fetch(url, { mode: 'cors' })
     let weather = await response.json();
