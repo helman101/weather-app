@@ -18,16 +18,36 @@ let getTags = () => {
   return { cityName, img, temperature, condition, description, feelsLike, minTemp, maxTemp }
 }
 
-let setTags = (temperatures, weather) => {
+let setUnitString = (unit) => {
+  let string;
+
+  switch (unit) {
+    case 'imperial':
+      string = '°F'
+      break;
+    case 'standard':
+      string = '°K'
+      break;
+    default:
+      string = '°C'
+  }
+
+  return string
+}
+
+let setTags = (temperatures, weather, unit) => {
   let tags = getTags();
+
+  let unitTemp = setUnitString(unit);
+
   tags.cityName.textContent = weatherData.getName();
-  tags.temperature.textContent = `${parseInt(temperatures.temp)} °C`
+  tags.temperature.textContent = `${parseInt(temperatures.temp)} ${unitTemp}`
   tags.img.src = getImage(weather.icon)
   tags.condition.textContent = weather.main;
   tags.description.textContent = weather.description;
-  tags.feelsLike.textContent = `Feel: ${parseInt(temperatures.feels_like)} °C`;
-  tags.minTemp.textContent = `Min: ${parseInt(temperatures.temp_min)} °C`;
-  tags.maxTemp.textContent = `Max: ${parseInt(temperatures.temp_max)} °C`;
+  tags.feelsLike.textContent = `Feel: ${parseInt(temperatures.feels_like)} ${unitTemp}`;
+  tags.minTemp.textContent = `Min: ${parseInt(temperatures.temp_min)} ${unitTemp}`;
+  tags.maxTemp.textContent = `Max: ${parseInt(temperatures.temp_max)} ${unitTemp}`;
 }
 
 let ubicationSuccess = async function(data) {
@@ -46,7 +66,7 @@ let searchByCity = async function(cityName, unit) {
     await weatherData.getWeatherByCity(cityName, unit);
     let temperatures = weatherData.getTemperatures();
     let weatherInfo = weatherData.getWeatherInfo();
-    setTags(temperatures, weatherInfo);
+    setTags(temperatures, weatherInfo, unit);
   }
   catch {
     let notice = document.createElement('div');
