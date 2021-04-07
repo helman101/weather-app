@@ -44,6 +44,7 @@ let getUbication = () => {
 
 let pageLoad = () => {
   let container = document.querySelector('.container');
+  let search = document.querySelector('.search');
   let card = document.createElement('div');
   card.classList.add('card');
   let cityName = document.createElement('div');
