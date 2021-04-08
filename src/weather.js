@@ -20,7 +20,7 @@ let weatherModule = (() => {
   }
 
   async function getWeatherByCity(city, unitTemp) {
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unitTemp}&APPID=${API_KEY}`
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unitTemp}&APPID=${API_KEY}`
     let response = await fetch(url, { mode: 'cors' })
     let weather = await response.json();
   
@@ -28,7 +28,7 @@ let weatherModule = (() => {
   };
  
   async function getWeatherByUbication(lat = 40, long = -73) {
-    let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${API_KEY}`
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${API_KEY}`
     let response = await fetch(url, { mode: 'cors' })
     let weather = await response.json();
   

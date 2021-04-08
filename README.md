@@ -39,7 +39,7 @@ To set up a local copy of the project
 
 - Now you are ready to run a local server
 - Go to your command line and put `npm run start`
-- Go to http://localhost:8080/
+- Go to https://localhost:8080/
 - Try it!!
 
 ## Author
