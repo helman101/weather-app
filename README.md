@@ -10,7 +10,7 @@ A simple but goodlooking weather app, that is able to:
 
 ![](./scrn/weather-app.png)
 
-## [Live Link](https://helman101.github.io/Todo-list/)
+## [Live Link](https://helman101.github.io/weather-app/)
 
 ## Built With
 
