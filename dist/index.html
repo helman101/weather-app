@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+</head>
+<body>
+  
+  <main class="wrapper d-flex justify-content-center aling-items-center flex-column">
+    <nav class="search d-flex justify-content-center aling-items-center">
+      <label for="city" class="mr-10">City Name: </label>
+      <input id="city" class="city-text mr-10" type="text" placeholder="New York">
+  
+      <label for="unit" class="mr-10">Select unit of measure: </label>
+      <select id="unit" class="unit mr-10">
+        <option value="metric" selected="selected">Celsius</option>
+        <option value="imperial">Farenheit</option>
+        <option value="standard">Kelvin</option>
+      </select>
+  
+      <button class="search-btn">Search Weather</button>
+  
+    </nav>
+  
+    <div class="container">
+  
+    </div>
+  </main>
+  
+  <script src="main.js"></script>
+</body>
+</html>
