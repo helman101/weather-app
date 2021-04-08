@@ -18,7 +18,7 @@ const weatherModule = (() => {
     const weather = await response.json();
 
     setCurrentData(weather);
-  }
+  };
 
   const getWeatherByUbication = async (lat, long) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${API_KEY}`;
@@ -26,7 +26,7 @@ const weatherModule = (() => {
     const weather = await response.json();
 
     setCurrentData(weather);
-  }
+  };
 
   return {
     getWeatherByCity,
