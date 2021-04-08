@@ -1,36 +1,36 @@
-import weatherData from './weather'
-import setTags from './tags'
+import weatherData from './weather';
+import setTags from './tags';
 
-let ubicationSuccess = async function(data) {
-  await weatherData.getWeatherByUbication(41, 12);
-  let temperatures = weatherData.getTemperatures();
-  let weatherInfo = weatherData.getWeatherInfo();
+const ubicationSuccess = async function (data) {
+  await weatherData.getWeatherByUbication(data.coords.latitude, data.coords.longitude);
+  const temperatures = weatherData.getTemperatures();
+  const weatherInfo = weatherData.getWeatherInfo();
   setTags(temperatures, weatherInfo);
-}
+};
 
-let searchModule = (() => {
-  let searchByUbication = () => {
-    navigator.geolocation.getCurrentPosition(async function(data) { await ubicationSuccess(data) }, function(err) { alert(`Please allow location access`) });
-  }
-  
-  let searchByCity = async function(cityName, unit) {
-    let notice = document.querySelector('.notice');
-    if(notice) { document.body.removeChild(notice) }
+const searchModule = (() => {
+  const searchByUbication = () => {
+    navigator.geolocation.getCurrentPosition(async (data) => { await ubicationSuccess(data); }, () => { alert('Please allow location access'); });
+  };
+
+  const searchByCity = async function (cityName, unit) {
+    const notice = document.querySelector('.notice');
+    if (notice) { document.body.removeChild(notice); }
     try {
       await weatherData.getWeatherByCity(cityName, unit);
-      let temperatures = weatherData.getTemperatures();
-      let weatherInfo = weatherData.getWeatherInfo();
+      const temperatures = weatherData.getTemperatures();
+      const weatherInfo = weatherData.getWeatherInfo();
       setTags(temperatures, weatherInfo, unit);
-    } catch(error) {
-      let notice = document.createElement('div');
+    } catch (error) {
+      const notice = document.createElement('div');
       notice.classList.add('notice');
-      notice.textContent = 'This is not a valid country'
-  
-      document.body.appendChild(notice)
-    }
-  }
+      notice.textContent = 'This is not a valid country';
 
-  return { searchByUbication, searchByCity }
+      document.body.appendChild(notice);
+    }
+  };
+
+  return { searchByUbication, searchByCity };
 })();
 
 export default searchModule;

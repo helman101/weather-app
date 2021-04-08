@@ -1,42 +1,44 @@
-import weatherData from './weather'
+import weatherData from './weather';
 
-let getImage = (code) => {
-  let url = `http://openweathermap.org/img/wn/${code}@2x.png`
-  return url
-}
+const getImage = (code) => {
+  const url = `http://openweathermap.org/img/wn/${code}@2x.png`;
+  return url;
+};
 
-let getTags = () => {
-  let cityName = document.querySelector('.city');
-  let img = document.querySelector('.weather-img');
-  let temperature = document.querySelector('.temperature');
-  let condition = document.querySelector('.condition');
-  let description = document.querySelector('.description');
-  let feelsLike = document.querySelector('.feels-like');
-  let minTemp = document.querySelector('.min-temp');
-  let maxTemp = document.querySelector('.max-temp');
+const getTags = () => {
+  const cityName = document.querySelector('.city');
+  const img = document.querySelector('.weather-img');
+  const temperature = document.querySelector('.temperature');
+  const condition = document.querySelector('.condition');
+  const description = document.querySelector('.description');
+  const feelsLike = document.querySelector('.feels-like');
+  const minTemp = document.querySelector('.min-temp');
+  const maxTemp = document.querySelector('.max-temp');
 
-  return { cityName, img, temperature, condition, description, feelsLike, minTemp, maxTemp }
-}
+  return {
+    cityName, img, temperature, condition, description, feelsLike, minTemp, maxTemp,
+  };
+};
 
-let setUnitString = (unit) => {
+const setUnitString = (unit) => {
   let string;
 
   switch (unit) {
     case 'imperial':
-      string = '°F'
+      string = '°F';
       break;
     case 'standard':
-      string = '°K'
+      string = '°K';
       break;
     default:
-      string = '°C'
+      string = '°C';
   }
 
-  return string
-}
+  return string;
+};
 
-let setCardBackground = (weather) => {
-  let body = document.body;
+const setCardBackground = (weather) => {
+  const { body } = document;
 
   switch (weather) {
     case 'Thunderstorm':
@@ -47,7 +49,7 @@ let setCardBackground = (weather) => {
       break;
     case 'Rain':
       body.style.backgroundImage = 'url(https://media.giphy.com/media/s9cu1TZU37KY8/source.gif)';
-      break;  
+      break;
     case 'Snow':
       body.style.backgroundImage = 'url(https://media.giphy.com/media/rRmBOCZDJJGU0/source.gif)';
       break;
@@ -61,23 +63,23 @@ let setCardBackground = (weather) => {
     default:
       body.style.backgroundImage = 'url(https://media.giphy.com/media/yhZr5Wx7CBFbq/source.gif)';
   }
-}
+};
 
-let setTags = (temperatures, weather, unit) => {
-  let tags = getTags();
+const setTags = (temperatures, weather, unit) => {
+  const tags = getTags();
 
-  let unitTemp = setUnitString(unit);
+  const unitTemp = setUnitString(unit);
 
   tags.cityName.textContent = weatherData.getName();
-  tags.temperature.textContent = `${parseInt(temperatures.temp)} ${unitTemp}`
-  tags.img.src = getImage(weather.icon)
+  tags.temperature.textContent = `${parseInt(temperatures.temp, 10)} ${unitTemp}`;
+  tags.img.src = getImage(weather.icon);
   tags.condition.textContent = weather.main;
   tags.description.textContent = weather.description;
-  tags.feelsLike.textContent = `Feel: ${parseInt(temperatures.feels_like)} ${unitTemp}`;
-  tags.minTemp.textContent = `Min: ${parseInt(temperatures.temp_min)} ${unitTemp}`;
-  tags.maxTemp.textContent = `Max: ${parseInt(temperatures.temp_max)} ${unitTemp}`;
+  tags.feelsLike.textContent = `Feel: ${parseInt(temperatures.feels_like, 10)} ${unitTemp}`;
+  tags.minTemp.textContent = `Min: ${parseInt(temperatures.temp_min, 10)} ${unitTemp}`;
+  tags.maxTemp.textContent = `Max: ${parseInt(temperatures.temp_max, 10)} ${unitTemp}`;
 
   setCardBackground(weather.main);
-}
+};
 
-export default setTags
+export default setTags;
