@@ -1,5 +1,5 @@
 const weatherModule = (() => {
-  const API_KEY = 'fab569fdbaec121a0ae14c37c3e3f3ce';
+  const API_KEY = 'API_KEY_HERE';
   let currentData;
 
   const setCurrentData = (data) => {
