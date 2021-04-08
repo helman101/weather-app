@@ -1,7 +1,7 @@
 import weatherData from './weather';
 import setTags from './tags';
 
-const ubicationSuccess = async function (data) {
+const ubicationSuccess = async (data) => {
   await weatherData.getWeatherByUbication(data.coords.latitude, data.coords.longitude);
   const temperatures = weatherData.getTemperatures();
   const weatherInfo = weatherData.getWeatherInfo();
@@ -13,7 +13,7 @@ const searchModule = (() => {
     navigator.geolocation.getCurrentPosition(async (data) => { await ubicationSuccess(data); }, () => { alert('Please allow location access'); });
   };
 
-  const searchByCity = async function (cityName, unit) {
+  const searchByCity = async (cityName, unit) => {
     const notice = document.querySelector('.notice');
     if (notice) { document.body.removeChild(notice); }
     try {

@@ -12,7 +12,7 @@ const weatherModule = (() => {
 
   const getWeatherInfo = () => currentData.weather[0];
 
-  async function getWeatherByCity(city, unitTemp) {
+  const getWeatherByCity = async (city, unitTemp) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unitTemp}&APPID=${API_KEY}`;
     const response = await fetch(url, { mode: 'cors' });
     const weather = await response.json();
@@ -20,7 +20,7 @@ const weatherModule = (() => {
     setCurrentData(weather);
   }
 
-  async function getWeatherByUbication(lat, long) {
+  const getWeatherByUbication = async (lat, long) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${API_KEY}`;
     const response = await fetch(url, { mode: 'cors' });
     const weather = await response.json();
